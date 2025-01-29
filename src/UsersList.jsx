@@ -10,7 +10,7 @@ function UsersList() {
   return (
     <ul>
       {data.map((user) => (
-        <li key={user.id}>{user.username}</li>
+        <li key={user.id}>{user.address.city}</li>
       ))}
     </ul>
   );
