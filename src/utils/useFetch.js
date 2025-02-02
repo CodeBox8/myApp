@@ -1,3 +1,9 @@
+/* 
+Create your customer hook useFetch that takes a URL as an argument and returns an object with three properties: data,
+loading, and error. The data property should contain the data fetched from the URL, loading should be a boolean indicating
+whether the data is being fetched, and error should be a string containing an error message if the fetch fails.
+*/
+
 import { useState, useEffect } from "react";
 
 function useFetch(url) {
