@@ -8,6 +8,7 @@ import CustomeHook from "./componants/CustomeHookComp.jsx";
 import Counter from "./componants/UseReducerComp.jsx";
 import UseEffect from "./componants/UseEffectComp.jsx";
 import UseRef from "./componants/UseRefComp.jsx";
+import UseMemoCom from "./componants/UseMemoCom.jsx";
 import UseContext from "./componants/CompA.jsx";
 
 const UserContextComp = createContext();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/UseReducer" element={<Counter />} />
         <Route path="/UseEffect" element={<UseEffect />} />
         <Route path="/UseRef" element={<UseRef />} />
+        <Route path="/UseMemo" element={<UseMemoCom />} />
         <Route
           path="/UseContext"
           element={

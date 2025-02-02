@@ -22,9 +22,13 @@ const NavBar = () => {
       <Link className="navLink" to="/UseRef">
       useRef
       </Link>
-      <Link className="navLink" to="/UseContext">
-      useContext
+      <Link className="navLink" to="/UseMemo">
+      UseMemo
       </Link>
+  {/*     <Link className="navLink" to="/UseContext">
+      useContext
+      </Link> */}
+
       
     </nav>
   );
