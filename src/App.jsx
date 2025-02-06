@@ -10,8 +10,11 @@ import UseEffect from "./componants/UseEffectComp";
 import UseRef from "./componants/UseRefComp";
 import UseMemoCom from "./componants/UseMemoCom";
 import ErrorBoundary from "./utils/ErrorBoundary";
-const UseContext = React.lazy(() => import('./componants/CompA'));
+import ReduxToolKitComp from "./componants/ReduxToolKitComp";
+import ToDoComp from "./componants/ToDo";
 
+
+const UseContextComp = React.lazy(() => import('./componants/CompA'));
 
 const NameContext = createContext();
 
@@ -22,8 +25,7 @@ function App() {
   return (
     <Router>
       <NavBar />
-      <Suspense fallback={<div>Loadinggggggggg...</div>}>
-
+      <Suspense fallback={<div>Lazy Loading is working please wait ...</div>}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/TicTac" element={<TicTac />} />
@@ -37,11 +39,14 @@ function App() {
           element={
             <ErrorBoundary>
               <NameContext.Provider value={contextDataObj}>
-                <UseContext />
+                <UseContextComp />
               </NameContext.Provider >
             </ErrorBoundary>
           }
         />
+      <Route path="/ReduxToolKit" element={<ReduxToolKitComp />} />
+      <Route path="/ToDoComp" element={<ToDoComp />} />
+      
       </Routes>
       </Suspense>
     </Router>

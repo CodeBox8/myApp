@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useInsertionEffect,
   useState,
+  useLayoutEffect,
 } from "react";
 
 function Home() {
@@ -19,13 +20,26 @@ function Home() {
         return state;
     }
   }
-  const [state, dispatch] = useReducer(counterReducer, { count: 0 });
 
-  useEffect(() => {
-    alert("count is mount");
+  const [state, dispatchEffect] = useReducer(counterReducer, { count: 0 });
+
+  /* useLayoutEffect */
+  useLayoutEffect(() => {
+    alert("useLayoutEffect count is mount");
 
     return () => {
-      alert("count is unmount");
+      alert("useLayoutEffect count is unmount");
+    };
+  }, [state.count]);
+
+  /* useEffect */
+
+
+  useEffect(() => {
+    alert("useEffect count is mount");
+
+    return () => {
+      alert("useEffect count is unmount");
     };
   }, [state.count]);
 
@@ -55,19 +69,31 @@ function Home() {
         <button onClick={() => setColor(color === "blue" ? "red" : "blue")}>
           Toggle Color
         </button>
+
+        {/* ************ useLayoutEffect ************ */}
+        <h1>Example of useLayoutEffect</h1>
+        <h3>Count: {state.count}</h3>
+        <button onClick={() => dispatchEffect({ type: "increment" })}>
+          Increment
+        </button>
+        <button onClick={() => dispatchEffect({ type: "decrement" })}>
+          Decrement
+        </button>
+        <button onClick={() => dispatchEffect({ type: "reset" })}>Reset</button>
+
         {/* ************ useEffect ************ */}
         <h1>Example of useEffect</h1>
         <h3>Count: {state.count}</h3>
-        <button onClick={() => dispatch({ type: "increment" })}>
+        <button onClick={() => dispatchEffect({ type: "increment" })}>
           Increment
         </button>
-        <button onClick={() => dispatch({ type: "decrement" })}>
+        <button onClick={() => dispatchEffect({ type: "decrement" })}>
           Decrement
         </button>
-        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+        <button onClick={() => dispatchEffect({ type: "reset" })}>Reset</button>
+
       </div>
     </div>
-
   );
 }
 
