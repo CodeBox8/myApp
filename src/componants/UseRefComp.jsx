@@ -1,6 +1,5 @@
 
 import React, { useRef } from 'react';
-import CompD from './CompD';
 
 const UseRef = () => {
   const inputRef = useRef(null);
