@@ -1,12 +1,13 @@
-import React from 'react'
-import CompB from './CompB'
+import React from "react";
+import CompB from "./CompB";
 
 const CompA = () => {
   return (
     <div>
-<CompB/>      
+      <h1>CompA</h1>
+      <CompB />
     </div>
-  )
-}
+  );
+};
 
-export default CompA
+export default CompA;

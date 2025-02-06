@@ -1,25 +1,28 @@
-import React, { createContext } from "react";
+import React, { createContext,Suspense  } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import NavBar from "./NavCom.jsx";
-import Home from "./componants/HomeComp.jsx";
-import TicTac from "./componants/TicTacComp.jsx";
-import CustomeHook from "./componants/CustomeHookComp.jsx";
-import Counter from "./componants/UseReducerComp.jsx";
-import UseEffect from "./componants/UseEffectComp.jsx";
-import UseRef from "./componants/UseRefComp.jsx";
-import UseMemoCom from "./componants/UseMemoCom.jsx";
-import UseContext from "./componants/CompA.jsx";
+import NavBar from "./NavCom";
+import Home from "./componants/HomeComp";
+import TicTac from "./componants/TicTacComp";
+import CustomeHook from "./componants/CustomeHookComp";
+import Counter from "./componants/UseReducerComp";
+import UseEffect from "./componants/UseEffectComp";
+import UseRef from "./componants/UseRefComp";
+import UseMemoCom from "./componants/UseMemoCom";
+import ErrorBoundary from "./utils/ErrorBoundary";
+const UseContext = React.lazy(() => import('./componants/CompA'));
 
-const UserContextComp = createContext();
+
+const NameContext = createContext();
 
 function App() {
-  const user = {
+  const contextDataObj = {
     name: "Sanket",
   };
   return (
     <Router>
       <NavBar />
+      <Suspense fallback={<div>Loadinggggggggg...</div>}>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,15 +35,19 @@ function App() {
         <Route
           path="/UseContext"
           element={
-            <UserContextComp.Provider value={user}>
-              <UseContext />
-            </UserContextComp.Provider>
+            <ErrorBoundary>
+              <NameContext.Provider value={contextDataObj}>
+                <UseContext />
+              </NameContext.Provider >
+            </ErrorBoundary>
           }
         />
       </Routes>
+      </Suspense>
     </Router>
   );
 }
 
+
 export default App;
-export { UserContextComp };
+export {NameContext};

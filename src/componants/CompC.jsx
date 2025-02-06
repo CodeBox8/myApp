@@ -1,14 +1,13 @@
 import React, {useContext} from 'react'
-import UserContextComp from '../App'
 
-
+import {NameContext} from "../App";
 
 const CompC = () => {
-    const user = useContext(UserContextComp);
+    const contextData = useContext(NameContext);
   return (
     <div>
         <h1>Example of useContext</h1>
-        {console.log("user is "+user)}
+        <p>Name from Context: {contextData.name }</p>
     </div>
   )
 }

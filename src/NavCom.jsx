@@ -25,9 +25,9 @@ const NavBar = () => {
       <Link className="navLink" to="/UseMemo">
       UseMemo
       </Link>
-  {/*     <Link className="navLink" to="/UseContext">
+  {    <Link className="navLink" to="/UseContext">
       useContext
-      </Link> */}
+      </Link>}
 
       
     </nav>
